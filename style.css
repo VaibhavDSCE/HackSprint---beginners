@@ -1,61 +1,180 @@
-/* style.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* General Styling */
 body {
-    font-family: 'Courier New', Courier, monospace;
-    background-color: #1a1a1a;
-    color: #33FF66;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1f1c2c, #928dab); /* Subtle dark gradient background */
+    color: #E0E0E0;
     text-align: center;
     padding: 50px;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    scroll-snap-type: y mandatory; /* Scroll snapping */
+    overflow-y: scroll;
 }
 
+/* Section for Scroll Snapping */
+section {
+    height: 100vh;
+    scroll-snap-align: start;
+}
+
+/* Glassmorphism Styling for Clock */
 .clock {
     font-size: 6rem;
-    margin-bottom: 20px;
+    padding: 20px;
     border-radius: 30px;
-    padding: 10px;
-    border: 4px solid #33FF66;
-    display: inline-block;
-    text-shadow: 0 0 15px #33FF66, 0 0 25px #33FF66;
+    border: 4px solid rgba(0, 255, 198, 0.5); /* Neon Cyan */
+    background: rgba(255, 255, 255, 0.1); /* Glassmorphism */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Subtle glow */
+    backdrop-filter: blur(10px); /* Glass blur effect */
+    text-shadow: 0 0 10px #00FFC6, 0 0 20px #00FFC6;
+    transition: all 0.4s ease;
+    animation: fadeIn 2s ease forwards;
 }
 
+.clock:hover {
+    border-color: rgba(255, 0, 127, 0.5); /* Neon Pink on hover */
+    text-shadow: 0 0 20px #FF007F, 0 0 40px #FF007F;
+    transform: scale(1.1);
+}
+
+/* Date Styling */
 .date {
     font-size: 2rem;
-    margin-bottom: 10px;
-    text-shadow: 0 0 10px #33FF66, 0 0 15px #33FF66;
+    color: rgba(224, 224, 224, 0.8); /* Lighter gray */
+    text-shadow: 0 0 10px rgba(0, 255, 198, 0.5);
+    animation: slideInUp 2s ease forwards;
 }
 
+/* Quote Styling with Neumorphism */
 .quote {
     font-size: 1.5rem;
-    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #1c1b2c;
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4), -5px -5px 15px rgba(255, 255, 255, 0.05); /* Neumorphism */
+    color: #FF007F;
     transition: opacity 1s ease-in-out;
     opacity: 0;
+    animation: fadeIn 4s ease forwards;
 }
 
+/* Settings Section */
 .settings {
     margin-top: 20px;
+    font-size: 1.2rem;
 }
 
-.stopwatch-title {
-    margin-top: 30px;
-    font-size: 2.5rem;
-    color: #33FF66;
-    text-shadow: 0 0 10px #33FF66, 0 0 15px #33FF66;
-}
-
-.timer-container {
-    margin-top: 20px;
-}
-
-#stopwatchDisplay {
-    font-size: 3rem;
-    margin-bottom: 10px;
-}
-
+/* Neon Styled Buttons with Sound and Hover Effects */
 button {
-    margin: 5px;
-    padding: 10px;
-    background-color: #33FF66;
-    color: #1a1a1a;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #121212;
+    background: linear-gradient(45deg, #00FFC6, #FF007F);
     border: none;
-    border-radius: 5px;
+    border-radius: 30px;
     cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 10px;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(45deg, #FF007F, #00FFC6);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+    transform: translateY(-3px);
+}
+
+/* Press Effect (When Button is Pressed) */
+button:active {
+    transform: translateY(4px);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon Animation on Hover */
+button::before {
+    content: '→';
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    color: #FF007F;
+}
+
+button:hover::before {
+    right: 15px;
+    opacity: 1;
+}
+
+/* Blinking Button */
+.blinking-button {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Slide In Up Animation */
+@keyframes slideInUp {
+    0% { transform: translateY(50px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Neumorphism for Inputs */
+input {
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.05); /* Neumorphism */
+    background-color: #1c1b2c;
+    color: #E0E0E0;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 5px 5px 15px rgba(0, 255, 198, 0.5), -5px -5px 15px rgba(255, 255, 255, 0.05);
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .clock {
+        font-size: 4rem;
+        padding: 10px;
+    }
+
+    .date {
+        font-size: 1.5rem;
+    }
+
+    .quote {
+        font-size: 1.2rem;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
 }
