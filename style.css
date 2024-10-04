@@ -3,7 +3,7 @@
 /* General Styling */
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #1f1c2c, #928dab); /* Subtle dark gradient background */
+    background: radial-gradient(circle, #0a0a0a, #121212, #1a1a1a); /* Deep dark background */
     color: #E0E0E0;
     text-align: center;
     padding: 50px;
@@ -23,42 +23,42 @@ section {
     scroll-snap-align: start;
 }
 
-/* Glassmorphism Styling for Clock */
+/* Glassmorphism Neon Clock */
 .clock {
     font-size: 6rem;
     padding: 20px;
     border-radius: 30px;
-    border: 4px solid rgba(0, 255, 198, 0.5); /* Neon Cyan */
-    background: rgba(255, 255, 255, 0.1); /* Glassmorphism */
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Subtle glow */
-    backdrop-filter: blur(10px); /* Glass blur effect */
-    text-shadow: 0 0 10px #00FFC6, 0 0 20px #00FFC6;
+    border: 4px solid rgba(0, 255, 198, 0.6); /* Neon Cyan */
+    background: rgba(255, 255, 255, 0.05); /* Glassmorphism with dark tint */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8); /* Darker glow */
+    backdrop-filter: blur(15px); /* Glass blur effect */
+    text-shadow: 0 0 10px #00FFC6, 0 0 30px #00FFC6, 0 0 60px #00FFC6; /* Neon Cyan */
     transition: all 0.4s ease;
     animation: fadeIn 2s ease forwards;
 }
 
 .clock:hover {
-    border-color: rgba(255, 0, 127, 0.5); /* Neon Pink on hover */
-    text-shadow: 0 0 20px #FF007F, 0 0 40px #FF007F;
+    border-color: rgba(255, 0, 127, 0.8); /* Neon Pink on hover */
+    text-shadow: 0 0 20px #FF007F, 0 0 40px #FF007F, 0 0 80px #FF007F; /* Neon Pink Glow */
     transform: scale(1.1);
 }
 
 /* Date Styling */
 .date {
     font-size: 2rem;
-    color: rgba(224, 224, 224, 0.8); /* Lighter gray */
+    color: rgba(224, 224, 224, 0.8); /* Soft gray */
     text-shadow: 0 0 10px rgba(0, 255, 198, 0.5);
     animation: slideInUp 2s ease forwards;
 }
 
-/* Quote Styling with Neumorphism */
+/* Neon Quote Styling */
 .quote {
     font-size: 1.5rem;
     padding: 10px 20px;
-    background-color: #1c1b2c;
+    background-color: rgba(30, 30, 30, 0.6); /* Dark glass effect */
     border-radius: 15px;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4), -5px -5px 15px rgba(255, 255, 255, 0.05); /* Neumorphism */
-    color: #FF007F;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8), -5px -5px 15px rgba(255, 255, 255, 0.1); /* Neumorphism */
+    color: #FF007F; /* Neon Pink */
     transition: opacity 1s ease-in-out;
     opacity: 0;
     animation: fadeIn 4s ease forwards;
@@ -70,17 +70,17 @@ section {
     font-size: 1.2rem;
 }
 
-/* Neon Styled Buttons with Sound and Hover Effects */
+/* Neon Button Styles */
 button {
     padding: 12px 30px;
     font-size: 16px;
     font-weight: bold;
-    color: #121212;
-    background: linear-gradient(45deg, #00FFC6, #FF007F);
+    color: #121212; /* Dark background for button text */
+    background: linear-gradient(45deg, #00FFC6, #FF007F); /* Neon gradient */
     border: none;
     border-radius: 30px;
     cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 255, 198, 0.6); /* Neon glow */
     position: relative;
     overflow: hidden;
     text-transform: uppercase;
@@ -90,8 +90,8 @@ button {
 }
 
 button:hover {
-    background: linear-gradient(45deg, #FF007F, #00FFC6);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(45deg, #FF007F, #00FFC6); /* Invert neon gradient */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 0, 127, 0.8); /* Larger neon pink glow */
     transform: translateY(-3px);
 }
 
@@ -146,8 +146,8 @@ button:hover::before {
 input {
     padding: 10px;
     border-radius: 10px;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.05); /* Neumorphism */
-    background-color: #1c1b2c;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8), -5px -5px 15px rgba(255, 255, 255, 0.1); /* Neumorphism */
+    background-color: rgba(30, 30, 30, 0.7); /* Dark glass effect */
     color: #E0E0E0;
     border: none;
     transition: all 0.3s ease;
@@ -155,7 +155,7 @@ input {
 
 input:focus {
     outline: none;
-    box-shadow: 5px 5px 15px rgba(0, 255, 198, 0.5), -5px -5px 15px rgba(255, 255, 255, 0.05);
+    box-shadow: 5px 5px 15px rgba(0, 255, 198, 0.8), -5px -5px 15px rgba(255, 255, 255, 0.05); /* Neon glow on focus */
 }
 
 /* Media Queries for Responsive Design */
