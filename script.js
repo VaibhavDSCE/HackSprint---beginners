@@ -1,61 +1,66 @@
-/* style.css */
-body {
-    font-family: 'Courier New', Courier, monospace;
-    background-color: #1a1a1a;
-    color: #33FF66;
-    text-align: center;
-    padding: 50px;
+// script.js
+
+const clockElement = document.getElementById('clock');
+const dateElement = document.getElementById('date');
+const quoteElement = document.getElementById('quote');
+const toggleTimeFormat = document.getElementById('toggleTimeFormat');
+const toggleDate = document.getElementById('toggleDate');
+const goToStopwatchPageButton = document.getElementById('goToStopwatchPage');
+
+let is12HourFormat = false;
+let quotes = [
+    "The only limit to our realization of tomorrow is our doubts of today.",
+    "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+    "You are never too old to set another goal or to dream a new dream.",
+];
+
+// Function to update the time
+function updateClock() {
+    const now = new Date();
+    let hours = now.getHours();
+    let minutes = String(now.getMinutes()).padStart(2, '0');
+    let seconds = String(now.getSeconds()).padStart(2, '0');
+
+    if (is12HourFormat) {
+        const period = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12 || 12;  // Convert to 12-hour format
+        clockElement.textContent = `${hours}:${minutes}:${seconds} ${period}`;
+    } else {
+        clockElement.textContent = `${String(hours).padStart(2, '0')}:${minutes}:${seconds}`;
+    }
+
+    if (toggleDate.checked) {
+        dateElement.style.display = 'block';
+        dateElement.textContent = now.toDateString();
+    } else {
+        dateElement.style.display = 'none';
+    }
 }
 
-.clock {
-    font-size: 6rem;
-    margin-bottom: 20px;
-    border-radius: 30px;
-    padding: 10px;
-    border: 4px solid #33FF66;
-    display: inline-block;
-    text-shadow: 0 0 15px #33FF66, 0 0 25px #33FF66;
+// Function to update the quote
+function updateQuote() {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    quoteElement.textContent = quotes[randomIndex];
+    quoteElement.style.opacity = 1;
+    setTimeout(() => quoteElement.style.opacity = 0, 9000);
 }
 
-.date {
-    font-size: 2rem;
-    margin-bottom: 10px;
-    text-shadow: 0 0 10px #33FF66, 0 0 15px #33FF66;
-}
+// Event Listeners for Time Format Toggle and Date
+toggleTimeFormat.addEventListener('change', () => {
+    is12HourFormat = toggleTimeFormat.checked;
+});
+toggleDate.addEventListener('change', () => {
+    dateElement.style.display = toggleDate.checked ? 'block' : 'none';
+});
 
-.quote {
-    font-size: 1.5rem;
-    margin-top: 10px;
-    transition: opacity 1s ease-in-out;
-    opacity: 0;
-}
+// Update the clock every second
+setInterval(updateClock, 1000);
 
-.settings {
-    margin-top: 20px;
-}
+// Update the quote every 10 seconds
+updateQuote();
+setInterval(updateQuote, 10000);
 
-.stopwatch-title {
-    margin-top: 30px;
-    font-size: 2.5rem;
-    color: #33FF66;
-    text-shadow: 0 0 10px #33FF66, 0 0 15px #33FF66;
-}
-
-.timer-container {
-    margin-top: 20px;
-}
-
-#stopwatchDisplay {
-    font-size: 3rem;
-    margin-bottom: 10px;
-}
-
-button {
-    margin: 5px;
-    padding: 10px;
-    background-color: #33FF66;
-    color: #1a1a1a;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
+// Button to navigate to the stopwatch page
+goToStopwatchPageButton.addEventListener('click', () => {
+    window.location.href = 'stopwatch.html';  // Redirect to the stopwatch page
+});
